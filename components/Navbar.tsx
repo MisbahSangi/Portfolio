@@ -1,6 +1,6 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import Link from 'next/link';
 import { PERSONAL, LINKS } from '@/data/config';
 
@@ -13,21 +13,31 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { scrollY } = useScroll();
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() || 0;
+    if (latest > previous && latest > 150) {
+      setHidden(true);
+      setMenuOpen(false); // Close menu when hiding navbar
+    } else {
+      setHidden(false);
+    }
+    setScrolled(latest > 50);
+  });
 
   return (
     <>
       {/* Floating Pill Navbar */}
       <motion.nav
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+        variants={{
+          visible: { y: 0, opacity: 1 },
+          hidden: { y: "-150%", opacity: 0 }
+        }}
+        animate={hidden ? "hidden" : "visible"}
+        transition={{ duration: 0.35, ease: "easeInOut" }}
         className="fixed top-4 md:top-6 left-0 right-0 w-full z-50 flex justify-center px-4 pointer-events-none"
       >
         <div className={`pointer-events-auto w-full max-w-4xl transition-all duration-300 rounded-full px-5 md:px-6 h-14 md:h-16 flex items-center justify-between

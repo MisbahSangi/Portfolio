@@ -111,7 +111,7 @@ export default function Contact() {
                       required rows={5}
                       value={form.message}
                       onChange={e => setForm({ ...form, message: e.target.value })}
-                      placeholder="I'd like to discuss an internship opportunity..."
+                      placeholder="I'd like to discuss ..."
                       className="w-full px-4 py-3.5 bg-background border border-border rounded-xl text-sm text-foreground focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-muted/50 resize-none"
                     />
                   </div>
