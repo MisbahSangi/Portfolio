@@ -23,16 +23,21 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top bar — visible at page top */}
+      {/* Floating Pill Navbar */}
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-        className="fixed top-0 left-0 right-0 z-50"
+        className="fixed top-4 left-4 right-4 md:top-6 md:left-1/2 md:right-auto md:-translate-x-1/2 md:w-full md:max-w-4xl z-50"
       >
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className={`transition-all duration-300 rounded-full px-5 md:px-6 h-14 md:h-16 flex items-center justify-between
+          ${scrolled 
+            ? 'bg-background/70 backdrop-blur-lg border border-border shadow-lg shadow-black/10' 
+            : 'bg-background/30 backdrop-blur-md border border-border/50 shadow-sm'
+          }`}
+        >
           {/* Logo */}
-          <Link href="/" className="font-bold text-xl tracking-tight text-foreground hover:text-accent transition-colors">
+          <Link href="/" className="font-bold text-xl tracking-tight text-foreground hover:text-accent transition-colors pl-2">
             {PERSONAL.name.split(' ')[0]}
             <span className="text-accent">.</span>
           </Link>
@@ -43,7 +48,7 @@ export default function Navbar() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  className="text-sm font-medium text-muted hover:text-foreground px-3 py-2 rounded-lg hover:bg-surface transition-all"
+                  className="text-sm font-medium text-muted hover:text-foreground px-4 py-2 rounded-full hover:bg-white/5 transition-all"
                 >
                   {l.label}
                 </a>
@@ -52,17 +57,17 @@ export default function Navbar() {
           </ul>
 
           {/* CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2 pr-1">
             <a
               href={LINKS.cv}
               download="Misbah_Abdullah_CV.docx"
-              className="text-sm font-medium text-muted hover:text-foreground px-4 py-2 rounded-lg border border-border hover:border-muted transition-all cursor-pointer"
+              className="text-sm font-medium text-muted hover:text-foreground px-4 py-2 rounded-full hover:bg-white/5 transition-all cursor-pointer"
             >
               Resume
             </a>
             <a
               href="#contact"
-              className="text-sm font-medium bg-accent text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors cursor-pointer"
+              className="text-sm font-medium bg-accent text-white px-5 py-2.5 rounded-full hover:bg-blue-600 hover:-translate-y-0.5 transition-all cursor-pointer shadow-sm shadow-blue-500/20"
             >
               Contact
             </a>
@@ -70,7 +75,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 text-foreground cursor-pointer"
+            className="md:hidden p-2 text-foreground cursor-pointer pr-1"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -90,14 +95,6 @@ export default function Navbar() {
             </svg>
           </button>
         </div>
-
-        {/* Backdrop blur bar on scroll */}
-        <motion.div
-          className="absolute inset-0 -z-10 bg-background/80 backdrop-blur-lg border-b border-border/50"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: scrolled ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
-        />
       </motion.nav>
 
       {/* Mobile menu */}
