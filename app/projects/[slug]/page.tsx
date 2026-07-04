@@ -107,7 +107,6 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                     alt={`${project.name} screenshot ${i + 1}`}
                     fill
                     className="object-cover"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                   />
                   {/* Fallback placeholder shown via CSS if image missing */}
                   <div className="absolute inset-0 flex items-center justify-center text-gray-300 text-sm -z-10">
