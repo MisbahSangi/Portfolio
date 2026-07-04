@@ -28,9 +28,9 @@ export default function Navbar() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-        className="fixed top-4 left-4 right-4 md:top-6 md:left-1/2 md:right-auto md:-translate-x-1/2 md:w-full md:max-w-4xl z-50"
+        className="fixed top-4 md:top-6 left-0 right-0 w-full z-50 flex justify-center px-4 pointer-events-none"
       >
-        <div className={`transition-all duration-300 rounded-full px-5 md:px-6 h-14 md:h-16 flex items-center justify-between
+        <div className={`pointer-events-auto w-full max-w-4xl transition-all duration-300 rounded-full px-5 md:px-6 h-14 md:h-16 flex items-center justify-between
           ${scrolled 
             ? 'bg-background/70 backdrop-blur-lg border border-border shadow-lg shadow-black/10' 
             : 'bg-background/30 backdrop-blur-md border border-border/50 shadow-sm'
