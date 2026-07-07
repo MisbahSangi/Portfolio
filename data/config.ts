@@ -24,9 +24,9 @@ export const PERSONAL = {
 // ── LINKS ──────────────────────────────────────────────────────
 export const LINKS = {
   // TODO: Replace with your real links
-  github: "https://github.com/MisbahSangi",          // TODO: your GitHub URL
+  github: "https://github.com/Misbah/Sangi",          // TODO: your GitHub URL
   linkedin: "https://www.linkedin.com/in/misbah-abdullah-6b72b6288/",  // TODO: your LinkedIn URL
-  email: "misbahabullah05d@email.com",                         // TODO: your email address
+  email: "misbahabullah05@gmail.com",                         // TODO: your email address
   cv: "/cv/Misbah_Abdullah_CV.docx",              // keep this — put your CV file in /public/cv/
 };
 
