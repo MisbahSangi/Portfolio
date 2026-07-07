@@ -101,7 +101,7 @@ export const PROJECTS: Project[] = [
     ],
     tags:        ["Flutter", "Dart", "media_kit", "FFmpeg", "OpenSubtitles API", "Provider"],
     category:    ["Flutter", "Mobile"],
-    github:      "https://github.com/MisbahSangi/flutter-video-player",  // TODO: confirm URL
+    github:      "https://github.com/MisbahSangi/Advance-Video-Player",  // TODO: confirm URL
     live:        null,
     badge:       null,
     color:       "from-blue-950 to-indigo-900",
@@ -127,7 +127,7 @@ export const PROJECTS: Project[] = [
     ],
     tags:        ["Flutter", "Firebase Auth", "Firestore", "FCM", "OAuth 2.0", "Cloudinary"],
     category:    ["Flutter", "Mobile"],
-    github:      "https://github.com/MisbahSangi/authapp",            // TODO: confirm URL
+    github:      "https://github.com/MisbahSangi/AuthApp",            // TODO: confirm URL
     live:        null,
     badge:       null,
     color:       "from-violet-950 to-purple-900",
@@ -153,7 +153,7 @@ export const PROJECTS: Project[] = [
     ],
     tags:        ["FastAPI", "Python", "Uvicorn", "BeautifulSoup", "ReportLab", "JavaScript"],
     category:    ["Web", "Python", "Backend"],
-    github:      "https://github.com/MisbahSangi/vulnerax",           // TODO: confirm URL
+    github:      "https://github.com/MisbahSangi/VulneraX",           // TODO: confirm URL
     live:        null,
     badge:       null,
     color:       "from-emerald-950 to-teal-900",
