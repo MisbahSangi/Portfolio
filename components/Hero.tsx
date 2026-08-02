@@ -16,7 +16,6 @@ const STACK = [
   { label: 'AI/ML' },
 ];
 
-// Animation variants
 const container = {
   hidden: {},
   visible: {
@@ -56,15 +55,14 @@ export default function Hero() {
   }, [displayed, deleting, wordIdx]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-28 md:pt-36 pb-20 px-6 overflow-hidden">
-
+    <section className="relative min-h-[90vh] flex items-center justify-center pt-28 md:pt-36 pb-20 px-6 overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Gradient orbs — navy + green, matching Identity Kit */}
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent/8 rounded-full blur-[100px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent-light/6 rounded-full blur-[100px]" />
+        {/* Glow orbs */}
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] dark:bg-blue-600/15" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent-light/10 rounded-full blur-[120px] dark:bg-emerald-500/10" />
 
-        {/* Dot grid with radial fade */}
+        {/* Dot grid */}
         <div
           className="absolute inset-0 bg-grid-dots"
           style={{
@@ -83,7 +81,7 @@ export default function Hero() {
         {/* Availability badge */}
         {PERSONAL.available && (
           <motion.div variants={fadeUp} className="mb-8 flex justify-center">
-            <div className="inline-flex items-center gap-2.5 bg-surface border border-border text-muted text-xs font-medium px-4 py-2 rounded-full">
+            <div className="inline-flex items-center gap-2.5 bg-surface/80 backdrop-blur-md border border-border text-muted text-xs font-medium px-4 py-2 rounded-full shadow-sm">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-light opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-light" />
@@ -107,7 +105,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Tagline */}
-        <motion.p variants={fadeUp} className="text-lg text-muted leading-relaxed max-w-2xl mx-auto mb-10">
+        <motion.p variants={fadeUp} className="text-lg text-muted leading-relaxed max-w-2xl mx-auto mb-10 font-light">
           {PERSONAL.tagline}
         </motion.p>
 
@@ -115,7 +113,7 @@ export default function Hero() {
         <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-4 mb-14">
           <a
             href="#projects"
-            className="inline-flex items-center gap-2 bg-accent text-white font-medium px-7 py-3 rounded-lg hover:opacity-90 hover:-translate-y-0.5 transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 bg-foreground text-background font-medium px-7 py-3 rounded-xl hover:opacity-90 hover:-translate-y-0.5 transition-all cursor-pointer shadow-md"
           >
             View Projects
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -125,7 +123,7 @@ export default function Hero() {
           <a
             href={LINKS.cv}
             download="Misbah_Abdullah_CV.docx"
-            className="inline-flex items-center gap-2 bg-surface text-foreground border border-border font-medium px-7 py-3 rounded-lg hover:border-muted hover:-translate-y-0.5 transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 bg-surface text-foreground border border-border font-medium px-7 py-3 rounded-xl hover:border-accent/50 hover:bg-surface-hover hover:-translate-y-0.5 transition-all cursor-pointer shadow-sm"
           >
             Download CV
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -139,15 +137,13 @@ export default function Hero() {
           {STACK.map((item) => (
             <span
               key={item.label}
-              className="text-xs font-medium text-muted bg-surface border border-border px-3 py-1.5 rounded-full hover:border-accent/30 hover:text-foreground transition-all cursor-default"
+              className="text-xs font-medium text-muted bg-surface/80 backdrop-blur-sm border border-border/80 px-3.5 py-1.5 rounded-full hover:border-accent/40 hover:text-foreground transition-all cursor-default shadow-2xs"
             >
               {item.label}
             </span>
           ))}
         </motion.div>
       </motion.div>
-
-
     </section>
   );
 }

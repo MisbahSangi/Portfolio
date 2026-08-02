@@ -23,10 +23,10 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 border-t border-border bg-surface/10">
+    <section id="contact" className="py-24 px-6 border-t border-border bg-surface/30">
       <div className="max-w-6xl mx-auto">
         <AnimateIn variant="fade-up">
-          <p className="text-sm font-medium text-accent mb-4 tracking-wide">Get in Touch</p>
+          <p className="text-sm font-semibold text-muted uppercase tracking-widest mb-4">Get in Touch</p>
         </AnimateIn>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
@@ -37,7 +37,7 @@ export default function Contact() {
                 Let's build something<br />
                 <span className="text-accent">incredible.</span>
               </h2>
-              <p className="text-muted leading-relaxed mb-10 max-w-md">
+              <p className="text-muted leading-relaxed mb-10 max-w-md font-light">
                 Open to software engineering internships for Summer 2026.
                 Whether it's Flutter, web, backend, or AI/ML — I'm ready to contribute.
               </p>
@@ -51,13 +51,13 @@ export default function Contact() {
                     target={cl.href.startsWith('http') ? '_blank' : undefined}
                     rel={cl.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     download={cl.download ? 'Misbah_Abdullah_CV.docx' : undefined}
-                    className="flex items-center gap-4 bg-surface border border-border rounded-xl p-4 hover:border-accent/50 hover:shadow-sm transition-all group cursor-pointer"
+                    className="flex items-center gap-4 bg-surface border border-border rounded-xl p-4 hover:border-accent/50 hover:shadow-md transition-all group cursor-pointer"
                   >
-                    <div className="w-12 h-12 rounded-lg bg-background border border-border flex items-center justify-center text-muted group-hover:text-accent group-hover:scale-110 transition-all">
+                    <div className="w-12 h-12 rounded-lg bg-background border border-border flex items-center justify-center text-muted group-hover:text-accent group-hover:scale-110 transition-all shadow-xs">
                       {cl.icon}
                     </div>
                     <div className="flex-1">
-                      <p className="text-xs text-muted font-medium mb-0.5">{cl.label}</p>
+                      <p className="text-[11px] text-muted font-mono uppercase tracking-wider mb-0.5">{cl.label}</p>
                       <p className="text-sm font-semibold text-foreground group-hover:text-accent transition-colors">{cl.value}</p>
                     </div>
                     <span className="text-muted group-hover:text-foreground group-hover:translate-x-1 transition-all">
@@ -71,7 +71,7 @@ export default function Contact() {
 
           {/* Right: Form */}
           <AnimateIn variant="fade-up" delay={0.3}>
-            <div className="bg-surface rounded-2xl p-8 border border-border relative overflow-hidden">
+            <div className="bg-surface rounded-2xl p-8 border border-border relative overflow-hidden shadow-sm">
               {sent ? (
                 <div className="py-12 text-center flex flex-col items-center">
                   <div className="w-16 h-16 bg-accent-light/10 text-accent-light rounded-full flex items-center justify-center mb-6">
@@ -86,7 +86,7 @@ export default function Contact() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-medium text-muted uppercase tracking-wider">Your Name</label>
+                    <label className="text-xs font-mono font-medium text-muted uppercase tracking-wider">Your Name</label>
                     <input
                       type="text" required
                       value={form.name}
@@ -96,7 +96,7 @@ export default function Contact() {
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-medium text-muted uppercase tracking-wider">Email Address</label>
+                    <label className="text-xs font-mono font-medium text-muted uppercase tracking-wider">Email Address</label>
                     <input
                       type="email" required
                       value={form.email}
@@ -106,7 +106,7 @@ export default function Contact() {
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-medium text-muted uppercase tracking-wider">Message</label>
+                    <label className="text-xs font-mono font-medium text-muted uppercase tracking-wider">Message</label>
                     <textarea
                       required rows={5}
                       value={form.message}
@@ -117,11 +117,11 @@ export default function Contact() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-foreground text-background font-medium py-3.5 rounded-xl hover:bg-muted transition-colors mt-2"
+                    className="w-full bg-foreground text-background font-medium py-3.5 rounded-xl hover:opacity-90 transition-opacity mt-2 cursor-pointer shadow-sm"
                   >
                     Send Message
                   </button>
-                  <p className="text-xs text-muted text-center mt-4">
+                  <p className="text-xs text-muted text-center mt-4 font-mono">
                     This will open your default email client.
                   </p>
                 </form>

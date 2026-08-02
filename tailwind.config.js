@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -12,13 +13,14 @@ module.exports = {
         mono: ['var(--font-jetbrains)', 'monospace'],
       },
       colors: {
-        background: '#FAFAFA',
-        surface: '#FFFFFF',
-        foreground: '#0A0A0A',
-        muted: '#5B6472',
-        border: '#E2E5E9',
-        accent: '#1E3A5F',
-        'accent-light': '#22C55E',
+        background: 'var(--background)',
+        surface: 'var(--surface)',
+        'surface-hover': 'var(--surface-hover)',
+        foreground: 'var(--foreground)',
+        muted: 'var(--muted)',
+        border: 'var(--border)',
+        accent: 'var(--accent)',
+        'accent-light': 'var(--accent-light)',
       },
     },
   },

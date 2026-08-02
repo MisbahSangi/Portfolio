@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import Link from 'next/link';
 import { PERSONAL, LINKS } from '@/data/config';
+import ThemeToggle from './ThemeToggle';
 
 const NAV_LINKS = [
   { label: 'About', href: '#about' },
@@ -21,7 +22,7 @@ export default function Navbar() {
     const previous = scrollY.getPrevious() || 0;
     if (latest > previous && latest > 150) {
       setHidden(true);
-      setMenuOpen(false); // Close menu when hiding navbar
+      setMenuOpen(false);
     } else {
       setHidden(false);
     }
@@ -42,8 +43,8 @@ export default function Navbar() {
       >
         <div className={`pointer-events-auto w-full max-w-4xl transition-all duration-300 rounded-full px-5 md:px-6 h-14 md:h-16 flex items-center justify-between
           ${scrolled
-            ? 'bg-background/70 backdrop-blur-lg border border-border shadow-lg shadow-black/10'
-            : 'bg-background/30 backdrop-blur-md border border-border/50 shadow-sm'
+            ? 'bg-surface/80 backdrop-blur-xl border border-border shadow-lg shadow-black/5 dark:shadow-black/30'
+            : 'bg-surface/40 backdrop-blur-md border border-border/60 shadow-sm'
           }`}
         >
           {/* Logo */}
@@ -58,7 +59,7 @@ export default function Navbar() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  className="text-sm font-medium text-muted hover:text-foreground px-4 py-2 rounded-full hover:bg-white/5 transition-all"
+                  className="text-sm font-medium text-muted hover:text-foreground px-4 py-2 rounded-full hover:bg-surface-hover transition-all"
                 >
                   {l.label}
                 </a>
@@ -66,44 +67,48 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* CTA */}
+          {/* CTA & Theme Toggle */}
           <div className="hidden md:flex items-center gap-2 pr-1">
+            <ThemeToggle />
             <a
               href={LINKS.cv}
               download="Misbah_Abdullah_CV.docx"
-              className="text-sm font-medium text-muted hover:text-foreground px-4 py-2 rounded-full hover:bg-white/5 transition-all cursor-pointer"
+              className="text-sm font-medium text-muted hover:text-foreground px-4 py-2 rounded-full hover:bg-surface-hover transition-all cursor-pointer"
             >
               Resume
             </a>
             <a
               href="#contact"
-              className="text-sm font-medium bg-accent text-white px-5 py-2.5 rounded-full hover:opacity-90 hover:-translate-y-0.5 transition-all cursor-pointer shadow-sm shadow-accent/20"
+              className="text-sm font-medium bg-foreground text-background px-5 py-2.5 rounded-full hover:opacity-90 hover:-translate-y-0.5 transition-all cursor-pointer shadow-sm"
             >
               Contact
             </a>
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden p-2 text-foreground cursor-pointer pr-1"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-              {menuOpen ? (
-                <>
-                  <line x1="4" y1="4" x2="16" y2="16" />
-                  <line x1="16" y1="4" x2="4" y2="16" />
-                </>
-              ) : (
-                <>
-                  <line x1="3" y1="5" x2="17" y2="5" />
-                  <line x1="3" y1="10" x2="17" y2="10" />
-                  <line x1="3" y1="15" x2="17" y2="15" />
-                </>
-              )}
-            </svg>
-          </button>
+          {/* Mobile buttons */}
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
+            <button
+              className="p-2 text-foreground cursor-pointer pr-1"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                {menuOpen ? (
+                  <>
+                    <line x1="4" y1="4" x2="16" y2="16" />
+                    <line x1="16" y1="4" x2="4" y2="16" />
+                  </>
+                ) : (
+                  <>
+                    <line x1="3" y1="5" x2="17" y2="5" />
+                    <line x1="3" y1="10" x2="17" y2="10" />
+                    <line x1="3" y1="15" x2="17" y2="15" />
+                  </>
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
       </motion.nav>
 
@@ -115,7 +120,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-16 left-0 right-0 z-40 bg-surface/95 backdrop-blur-lg border-b border-border px-6 py-6 flex flex-col gap-4 md:hidden"
+            className="fixed top-20 left-4 right-4 z-40 bg-surface/95 backdrop-blur-xl border border-border rounded-2xl p-6 flex flex-col gap-4 md:hidden shadow-xl"
           >
             {NAV_LINKS.map(l => (
               <a
@@ -130,9 +135,9 @@ export default function Navbar() {
             <a
               href={LINKS.cv}
               download="Misbah_Abdullah_CV.docx"
-              className="text-base font-medium text-accent cursor-pointer"
+              className="text-base font-medium text-accent cursor-pointer pt-2 border-t border-border"
             >
-              Download CV
+              Download CV ↓
             </a>
           </motion.div>
         )}
