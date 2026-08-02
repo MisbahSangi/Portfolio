@@ -5,10 +5,10 @@ import Link from 'next/link';
 import { PERSONAL, LINKS } from '@/data/config';
 
 const NAV_LINKS = [
-  { label: 'About',    href: '#about'    },
-  { label: 'Skills',   href: '#skills'   },
+  { label: 'About', href: '#about' },
+  { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Contact',  href: '#contact'  },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export default function Navbar() {
@@ -41,15 +41,15 @@ export default function Navbar() {
         className="fixed top-4 md:top-6 left-0 right-0 w-full z-50 flex justify-center px-4 pointer-events-none"
       >
         <div className={`pointer-events-auto w-full max-w-4xl transition-all duration-300 rounded-full px-5 md:px-6 h-14 md:h-16 flex items-center justify-between
-          ${scrolled 
-            ? 'bg-background/70 backdrop-blur-lg border border-border shadow-lg shadow-black/10' 
+          ${scrolled
+            ? 'bg-background/70 backdrop-blur-lg border border-border shadow-lg shadow-black/10'
             : 'bg-background/30 backdrop-blur-md border border-border/50 shadow-sm'
           }`}
         >
           {/* Logo */}
-          <Link href="/" className="font-bold text-xl tracking-tight text-foreground hover:text-accent transition-colors pl-2">
-            {PERSONAL.name.split(' ')[0]}
-            <span className="text-accent">.</span>
+          <Link href="/" className="font-mono font-medium text-xl tracking-tight text-foreground hover:text-accent transition-colors pl-2">
+            {PERSONAL.name}
+            <span className="text-accent-light">_</span>
           </Link>
 
           {/* Desktop links */}
@@ -77,7 +77,7 @@ export default function Navbar() {
             </a>
             <a
               href="#contact"
-              className="text-sm font-medium bg-accent text-white px-5 py-2.5 rounded-full hover:bg-blue-600 hover:-translate-y-0.5 transition-all cursor-pointer shadow-sm shadow-blue-500/20"
+              className="text-sm font-medium bg-accent text-white px-5 py-2.5 rounded-full hover:opacity-90 hover:-translate-y-0.5 transition-all cursor-pointer shadow-sm shadow-accent/20"
             >
               Contact
             </a>

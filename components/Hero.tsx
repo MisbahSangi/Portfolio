@@ -60,9 +60,9 @@ export default function Hero() {
 
       {/* Background effects */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Gradient orbs */}
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-500/8 rounded-full blur-[100px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-indigo-500/6 rounded-full blur-[100px]" />
+        {/* Gradient orbs — navy + green, matching Identity Kit */}
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent/8 rounded-full blur-[100px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent-light/6 rounded-full blur-[100px]" />
 
         {/* Dot grid with radial fade */}
         <div
@@ -85,8 +85,8 @@ export default function Hero() {
           <motion.div variants={fadeUp} className="mb-8 flex justify-center">
             <div className="inline-flex items-center gap-2.5 bg-surface border border-border text-muted text-xs font-medium px-4 py-2 rounded-full">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-light opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-light" />
               </span>
               Open to Internships — Summer 2026
             </div>
@@ -94,7 +94,7 @@ export default function Hero() {
         )}
 
         {/* Name */}
-        <motion.h1 variants={fadeUp} className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
+        <motion.h1 variants={fadeUp} className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6 font-mono">
           <span className="text-foreground">{PERSONAL.name.split(' ')[0]}</span>
           <br />
           <span className="text-accent">{PERSONAL.name.split(' ')[1]}</span>
@@ -103,20 +103,19 @@ export default function Hero() {
         {/* Typed role */}
         <motion.div variants={fadeUp} className="text-xl sm:text-2xl font-medium text-muted mb-6 h-8">
           <span className="text-foreground">{displayed}</span>
-          <span className="text-accent animate-pulse ml-0.5">|</span>
+          <span className="text-accent-light animate-pulse ml-0.5">|</span>
         </motion.div>
 
         {/* Tagline */}
         <motion.p variants={fadeUp} className="text-lg text-muted leading-relaxed max-w-2xl mx-auto mb-10">
-          I build production-quality apps across Flutter, MERN, FastAPI, Django & AI/ML.{' '}
-          <span className="text-foreground font-medium">10+ real projects.</span> Not just coursework.
+          {PERSONAL.tagline}
         </motion.p>
 
         {/* Buttons */}
         <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-4 mb-14">
           <a
             href="#projects"
-            className="inline-flex items-center gap-2 bg-accent text-white font-medium px-7 py-3 rounded-lg hover:bg-blue-600 hover:-translate-y-0.5 transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 bg-accent text-white font-medium px-7 py-3 rounded-lg hover:opacity-90 hover:-translate-y-0.5 transition-all cursor-pointer"
           >
             View Projects
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

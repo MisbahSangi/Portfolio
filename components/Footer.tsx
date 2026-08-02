@@ -10,8 +10,8 @@ export default function Footer() {
 
           {/* Logo + tagline */}
           <div className="text-center md:text-left">
-            <p className="font-bold text-xl tracking-tight mb-2 text-foreground hover:text-accent transition-colors cursor-pointer">
-              {PERSONAL.name.split(' ')[0]}<span className="text-accent">.</span>
+            <p className="font-mono font-medium text-xl tracking-tight mb-2 text-foreground hover:text-accent transition-colors cursor-pointer">
+              {PERSONAL.name}<span className="text-accent-light">_</span>
             </p>
             <p className="text-sm text-muted font-light">
               Building software that actually ships.
@@ -38,7 +38,7 @@ export default function Footer() {
             © {new Date().getFullYear()} {PERSONAL.name}. All rights reserved.
           </p>
           <div className="flex items-center gap-2 text-xs text-muted">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-accent-light animate-pulse"></span>
             Available for Summer 2026
           </div>
         </div>

@@ -7,11 +7,11 @@
 export const PERSONAL = {
   name: "Misbah Abdullah",
   role: "Full-Stack Developer",
-  tagline: "Building software that actually ships.",
+  tagline: "I build software that actually ships — not just prototypes.",
   bio: [
-    "Software Engineering student at COMSATS University Islamabad (2023–2027, CGPA 3.55). I don't just do coursework — I build complete, production-quality applications independently.",
-    "From a Flutter media player with IPTV support and 19 video presets, to a FastAPI web vulnerability scanner with 10 security checks, to a Django NLP plagiarism detector — every project solves a real problem.",
-    "Currently building AuditChain — an AI-powered compliance automation platform connecting Slack, GitHub & Gmail to auto-generate SOC 2 audit trails using local LLMs.",
+    "Software Engineering student at COMSATS University Islamabad (2023–2027, CGPA 3.55). I don't just do coursework — I build complete, production-quality applications independently, and I fix the real problems that come up while shipping them.",
+    "ClauseGuard is a production-grade AI contract risk analyzer with an 80-test suite, shipped through a real Gemini API outage mid-build. VulneraX is a live vulnerability scanner that finds real issues on real sites. Hot Spot POS is a paid client app currently in daily production use.",
+    "Currently an ML Engineering Intern at FlyRank, and building AuditChain — an AI compliance automation platform — as my Final Year Project.",
   ],
   location: "Sahiwal, Punjab, Pakistan",
   available: true,   // set to false to hide the "Open to work" badge
@@ -23,11 +23,10 @@ export const PERSONAL = {
 
 // ── LINKS ──────────────────────────────────────────────────────
 export const LINKS = {
-  // TODO: Replace with your real links
-  github: "https://github.com/MisbahSangi",          // TODO: your GitHub URL
-  linkedin: "https://www.linkedin.com/in/misbah-abdullah-6b72b6288/",  // TODO: your LinkedIn URL
-  email: "misbahabullah05@gmail.com",                         // TODO: your email address
-  cv: "/cv/Misbah Abdullah CV.docx",              // keep this — put your CV file in /public/cv/
+  github: "https://github.com/MisbahSangi",
+  linkedin: "https://www.linkedin.com/in/misbah-abdullah-6b72b6288/",
+  email: "misbahabullah05@gmail.com",
+  cv: "/cv/Misbah Abdullah CV.docx",
 };
 
 // ── IMAGES ─────────────────────────────────────────────────────

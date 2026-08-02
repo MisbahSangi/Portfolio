@@ -1,51 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-plex: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-jetbrains: 'JetBrains Mono', monospace;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  font-family: var(--font-inter);
-  background: #0F172A;
-  color: #F8FAFC;
+  font-family: var(--font-plex);
+  background: #FAFAFA;
+  color: #0A0A0A;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0F172A; }
-::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #475569; }
+::-webkit-scrollbar {
+  width: 6px;
+}
 
-/* Selection */
-::selection { background: rgba(59, 130, 246, 0.4); color: #fff; }
+::-webkit-scrollbar-track {
+  background: #FAFAFA;
+}
 
-/* Smooth transitions on interactive elements */
-a, button { transition: all 0.2s ease-out; }
+::-webkit-scrollbar-thumb {
+  background: #E2E5E9;
+  border-radius: 3px;
+}
 
-/* Dot grid background */
+::-webkit-scrollbar-thumb:hover {
+  background: #C4C9D0;
+}
+
+::selection {
+  background: rgba(30, 58, 95, 0.15);
+  color: #0A0A0A;
+}
+
+a,
+button {
+  transition: all 0.2s ease-out;
+}
+
 .bg-grid-dots {
-  background-image: radial-gradient(circle, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(10, 10, 10, 0.06) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
-/* Hide scrollbar for carousel */
-.scrollbar-hide::-webkit-scrollbar { display: none; }
-.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 
-/* Respect reduced motion */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
