@@ -3,7 +3,7 @@ import { SKILLS } from '@/data/projects';
 import AnimateIn, { StaggerContainer, StaggerItem } from './AnimateIn';
 import {
   TbDeviceMobile,
-  TbLayoutWeb,
+  TbLayout,
   TbServer,
   TbBrain,
   TbDatabase,
@@ -12,7 +12,7 @@ import {
 
 const ICONS: Record<string, JSX.Element> = {
   Mobile:    <TbDeviceMobile size={26} />,
-  Frontend:  <TbLayoutWeb size={26} />,
+  Frontend:  <TbLayout size={26} />,
   Backend:   <TbServer size={26} />,
   'AI / ML': <TbBrain size={26} />,
   Databases: <TbDatabase size={26} />,
