@@ -89,7 +89,7 @@ export default function Projects() {
               Featured <span className="font-semibold">Projects.</span>
             </h2>
             <p className="text-muted text-sm max-w-xs">
-              Drag to explore · Hover to pause · Click to view code
+              Drag to explore · Click to view code
             </p>
           </div>
         </AnimateIn>
@@ -127,8 +127,7 @@ export default function Projects() {
         <div
           ref={scrollRef}
           className={`flex gap-6 overflow-x-hidden py-4 px-6 select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => { setIsPaused(false); setIsDragging(false); }}
+          onMouseLeave={() => { setIsDragging(false); }}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
