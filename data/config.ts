@@ -25,7 +25,7 @@ export const PERSONAL = {
 export const LINKS = {
   github: "https://github.com/MisbahSangi",
   linkedin: "https://www.linkedin.com/in/misbah-abdullah-6b72b6288/",
-  email: "misbahabullah05@gmail.com",
+  email: "misbahabdullah05@gmail.com",
   cv: "/cv/Misbah Abdullah CV.docx",
 };
 
