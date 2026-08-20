@@ -1,9 +1,18 @@
 'use client';
-import { useState } from 'react';
+import { useState, FormEvent, ReactNode } from 'react';
+import emailjs from '@emailjs/browser';
 import { PERSONAL, LINKS } from '@/data/config';
 import AnimateIn from './AnimateIn';
 
-const CONTACT_LINKS = [
+type ContactLink = {
+  icon: ReactNode;
+  label: string;
+  value: string;
+  href: string;
+  download?: boolean;
+};
+
+const CONTACT_LINKS: ContactLink[] = [
   { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>, label: 'Email', value: LINKS.email, href: `mailto:${LINKS.email}` },
   { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" /></svg>, label: 'GitHub', value: 'MisbahSangi', href: LINKS.github },
   { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>, label: 'LinkedIn', value: 'misbah-abdullah', href: LINKS.linkedin },
@@ -12,14 +21,28 @@ const CONTACT_LINKS = [
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
-    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`);
-    window.location.href = `mailto:${LINKS.email}?subject=${subject}&body=${body}`;
-    setSent(true);
+    setStatus('sending');
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          message: form.message,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+      setStatus('sent');
+    } catch (err) {
+      console.error('EmailJS send failed:', err);
+      setStatus('error');
+    }
   };
 
   return (
@@ -72,14 +95,14 @@ export default function Contact() {
           {/* Right: Form */}
           <AnimateIn variant="fade-up" delay={0.3}>
             <div className="bg-surface rounded-2xl p-8 border border-border relative overflow-hidden shadow-sm">
-              {sent ? (
+              {status === 'sent' ? (
                 <div className="py-12 text-center flex flex-col items-center">
                   <div className="w-16 h-16 bg-accent-light/10 text-accent-light rounded-full flex items-center justify-center mb-6">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
                   </div>
-                  <h3 className="font-bold text-2xl text-foreground mb-3">Message Initiated!</h3>
-                  <p className="text-muted text-sm mb-8 max-w-xs mx-auto">Your default email client should have opened. I'll get back to you shortly.</p>
-                  <button onClick={() => setSent(false)} className="text-sm font-medium text-accent hover:text-accent-light underline underline-offset-4 transition-colors">
+                  <h3 className="font-bold text-2xl text-foreground mb-3">Message Sent!</h3>
+                  <p className="text-muted text-sm mb-8 max-w-xs mx-auto">Thanks for reaching out — I'll get back to you shortly.</p>
+                  <button onClick={() => { setStatus('idle'); setForm({ name: '', email: '', message: '' }); }} className="text-sm font-medium text-accent hover:text-accent-light underline underline-offset-4 transition-colors">
                     Send another message
                   </button>
                 </div>
@@ -117,12 +140,18 @@ export default function Contact() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-foreground text-background font-medium py-3.5 rounded-xl hover:opacity-90 transition-opacity mt-2 cursor-pointer shadow-sm"
+                    disabled={status === 'sending'}
+                    className="w-full bg-foreground text-background font-medium py-3.5 rounded-xl hover:opacity-90 transition-opacity mt-2 cursor-pointer shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    {status === 'sending' ? 'Sending...' : 'Send Message'}
                   </button>
+                  {status === 'error' && (
+                    <p className="text-xs text-red-400 text-center mt-3 font-mono">
+                      Something went wrong — please email me directly at {LINKS.email}.
+                    </p>
+                  )}
                   <p className="text-xs text-muted text-center mt-4 font-mono">
-                    This will open your default email client.
+                    Your message goes straight to my inbox.
                   </p>
                 </form>
               )}
