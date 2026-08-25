@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Misbah Abdullah — Full-Stack Developer',
     description: 'I build software that actually ships. 10+ real projects across Flutter, MERN, FastAPI, Django, and AI/ML.',
-    url: 'https://misbahabdullah-portfolio.vercel.app',
+    url: 'https://misbahabdullah.me',
     siteName: 'Misbah Abdullah Portfolio',
     images: [
       {
