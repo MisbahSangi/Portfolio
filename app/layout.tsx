@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { PERSONAL } from '@/data/config';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   title: `${PERSONAL.name} — ${PERSONAL.role}`,
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
           {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
