@@ -5,12 +5,13 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.misbahabdullah.me'),
   title: 'Misbah Abdullah — Full-Stack Developer',
   description: 'I build software that actually ships. 10+ real projects across Flutter, MERN, FastAPI, Django, and AI/ML.',
   openGraph: {
     title: 'Misbah Abdullah — Full-Stack Developer',
     description: 'I build software that actually ships. 10+ real projects across Flutter, MERN, FastAPI, Django, and AI/ML.',
-    url: 'https://misbahabdullah.me',
+    url: 'https://www.misbahabdullah.me',
     siteName: 'Misbah Abdullah Portfolio',
     images: [
       {
