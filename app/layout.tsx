@@ -4,14 +4,27 @@ import { PERSONAL } from '@/data/config';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 export const metadata: Metadata = {
-  title: `${PERSONAL.name} — ${PERSONAL.role}`,
-  description: `Portfolio of ${PERSONAL.name}. ${PERSONAL.role} specializing in Flutter, MERN, FastAPI, Django and AI/ML.`,
-  keywords: ['Flutter', 'React', 'FastAPI', 'Django', 'AI', 'ML', 'Software Engineer', 'Pakistan', 'Internship'],
-  authors: [{ name: PERSONAL.name }],
+  title: 'Misbah Abdullah — Full-Stack Developer',
+  description: 'I build software that actually ships. 10+ real projects across Flutter, MERN, FastAPI, Django, and AI/ML.',
   openGraph: {
-    title: `${PERSONAL.name} — ${PERSONAL.role}`,
-    description: `Portfolio of ${PERSONAL.name}`,
+    title: 'Misbah Abdullah — Full-Stack Developer',
+    description: 'I build software that actually ships. 10+ real projects across Flutter, MERN, FastAPI, Django, and AI/ML.',
+    url: 'https://misbahabdullah-portfolio.vercel.app',
+    siteName: 'Misbah Abdullah Portfolio',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Misbah Abdullah — Full-Stack Developer',
+    description: 'I build software that actually ships.',
+    images: ['/og-image.png'],
   },
 };
 
